@@ -1,7 +1,7 @@
 require 'csv'
 
 class EmployerCsv
-  def self.parse_csv (csv, employer_id)
+  def self.import_csv (csv, employer_id)
     earning_records = CsvUtils.csv_to_list(csv)
 
     # we can pass format from this method params(instead of passing employer_id) from class instance like -- @employer.employer_data_format --- @employer var can be initialize during api auth

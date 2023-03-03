@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe EmployerDataFormat, type: :model do
-  before do
-    employer = Employer.create(name: 'AcmeCo')
-
-    @employer_data_format = employer.create_employer_data_format(employee_id: "EmployeeNumber", earning_date: "CheckDate", earning_amount: "Amount")
-  end
-
   describe 'model validation' do
+    before do
+      employer = Employer.create(name: 'AcmeCo')
+  
+      @employer_data_format = employer.create_employer_data_format(employee_id: "EmployeeNumber", earning_date: "CheckDate", earning_amount: "Amount")
+    end
+
     it 'should be valid with attrs' do
       expect(@employer_data_format).to be_valid
     end

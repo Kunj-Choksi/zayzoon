@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Employer, type: :model do
-  before do
-    @employer = Employer.create(name: 'AcmeCo')
-  end
-
   describe 'model validation' do
+    before do
+      @employer = Employer.create(name: 'AcmeCo')
+    end
+  
     it 'should be valid with attrs' do
       expect(@employer).to be_valid
     end

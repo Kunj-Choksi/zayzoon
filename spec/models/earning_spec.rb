@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Earning, type: :model do
-  before do
-    employer = Employer.create(name: "AcmeCo")
-
-    employee = employer.employees.create(name: "John", external_ref: "A123")
-
-    @earning = employee.earnings.create(employee_external_ref: "A123", earning_date: Date.new(2021, 10, 14), amount: 34.7)
-  end
-
   describe "model validation" do
+    before do
+      employer = Employer.create(name: "AcmeCo")
+  
+      employee = employer.employees.create(name: "John", external_ref: "A123")
+  
+      @earning = employee.earnings.create(employee_external_ref: "A123", earning_date: Date.new(2021, 10, 14), amount: 34.7)
+    end
+
     it "should be valid with attrs" do
       expect(@earning).to be_valid
     end
