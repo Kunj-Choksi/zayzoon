@@ -1,30 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe EmployerDataFormat, type: :model do
-  before do
-    employer = Employer.create(name: 'AcmeCo')
-
-    @employer_data_format = employer.create_employer_data_format(employee_id: "EmployeeNumber", earning_date: "CheckDate", earning_amount: "Amount")
-  end
-
   describe 'model validation' do
+    before do
+      employer = Employer.create(name: 'AcmeCo')
+      format = { employee_external_ref: 'EmployeeNumber', earning_date: 'CheckDate', amount: 'Amount' }
+  
+      @employer_data_format = employer.create_employer_data_format(fields: format)
+    end
+
     it 'should be valid with attrs' do
       expect(@employer_data_format).to be_valid
     end
 
-    it 'should be invalid without employee_id' do
-      @employer_data_format.employee_id = nil
-      expect(@employer_data_format).to be_invalid
-    end
-
-    it 'should be invalid without earning_date' do
-      @employer_data_format.earning_date = nil
-      expect(@employer_data_format).to be_invalid
-    end
-    
-    it 'should be invalid without earning_amount' do
-      @employer_data_format.earning_amount = nil
-      expect(@employer_data_format).to be_invalid
+    it 'should have valid json fields attrs' do
+      expect(@employer_data_format.fields.keys).to eq(Earning.updatable_fields)
     end
   end
 
