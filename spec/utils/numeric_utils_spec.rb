@@ -17,4 +17,12 @@ RSpec.describe NumericUtils do
       expect(NumericUtils.currency_to_number("36,00.9$")).to eq(3600.9)  
     end
   end
+  
+  context "float number with precision" do
+    it "should scale number with given precision" do
+      expect(NumericUtils.float_precision(36.0001, 2)).to eq(36.00)
+      expect(NumericUtils.float_precision(36.098, 1)).to eq(36.1)
+      expect(NumericUtils.float_precision(36.098, 1)).not_to eq(36.0)
+    end
+  end
 end

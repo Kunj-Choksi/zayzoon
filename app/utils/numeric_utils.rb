@@ -7,4 +7,8 @@ class NumericUtils
     currency_text.gsub!(' ', '')
     currency_text.to_f
   end
+
+  def self.float_precision(number, precision) 
+    number.round(2)
+  end
 end

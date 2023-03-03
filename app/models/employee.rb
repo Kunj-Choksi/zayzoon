@@ -3,6 +3,5 @@ class Employee < ApplicationRecord
 
   validates :name, presence: true
   validates :external_ref, presence: true
-  validates :external_ref, presence: true
   validates :employer_id, presence: true
 end

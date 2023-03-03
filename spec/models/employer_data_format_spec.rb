@@ -13,7 +13,9 @@ RSpec.describe EmployerDataFormat, type: :model do
       expect(@employer_data_format).to be_valid
     end
 
-    it 'should have valid json fields attrs' do
+    it 'should have bare minimum fields to update earnings' do
+      @employer_data_format.fields = { earning_date: 'CheckDate', amount: 'Amount' }
+
       expect(@employer_data_format.fields.keys).to eq(Earning.updatable_fields)
     end
   end
